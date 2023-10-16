@@ -12,7 +12,7 @@ RUN sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 RUN sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 # Install
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
+# RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install vim git wget tmux net-tools openssh-server x11-apps -y
 # Install ROS
 # RUN DEBIAN_FRONTEND=noninteractive apt-get install cmake-curses-gui -y
