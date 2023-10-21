@@ -36,7 +36,6 @@ RUN rm -rf ~/miniconda3/miniconda.sh
 RUN ~/miniconda3/bin/conda init bash
 
 # Install XRDP
-RUN echo 'root:0000' | chpasswd
 RUN DEBIAN_FRONTEND=noninteractive apt-get install xrdp xfce4 xfce4-session xfce4-terminal -y
 RUN sed -i 's/#AllowRootLogin=false/AllowRootLogin=true/' /etc/xrdp/sesman.ini
 RUN systemctl enable xrdp
@@ -66,13 +65,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt install code -y
 # Delete temp files
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Add users and set passwords
-# RUN useradd -m hyeonbeen
-# RUN usermod -aG sudo hyeonbeen
-# RUN echo "hyeonbeen" | sudo -S chmod 777 /home
-# RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-# RUN echo 'hyeonbeen:0000' | chpasswd
-# USER hyeonbeen
+# Set passwords and user
+RUN echo 'root:0000' | chpasswd
+RUN useradd -m hyeonbeen
+RUN usermod -aG sudo hyeonbeen
+RUN echo "hyeonbeen" | sudo -S chmod 777 /home
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo 'hyeonbeen:0000' | chpasswd
 
 # After build, run container by:
 # docker run -itd --name test -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix -p 3389:3389 -p 33:22 myubuntu:focal
@@ -81,5 +80,5 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Connect using RDP client
 # Address: localhost:3390
-# Username: root 
+# Username: hyeonbeen 
 # PW: 0000
