@@ -79,9 +79,9 @@ RUN echo 'root:0000' | chpasswd
 # After build, run container by:
 # docker run -itd --name test -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix -p 3389:3389 -p 33:22 myubuntu:focal
 # docker exec -it test bash
-# service xrdp restart
 
 # Connect using RDP client
+# service xrdp restart
 # Address: localhost:3389
 # Username: root 
 # PW: 0000
