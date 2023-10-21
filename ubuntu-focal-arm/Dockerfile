@@ -61,17 +61,20 @@ RUN rm -f packages.microsoft.gpg
 RUN DEBIAN_FRONTEND=noninteractive apt install apt-transport-https -y
 RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install code -y
+RUN sed -i '/^#!.*/a set -- "$@" "--no-sandbox" "--user-data-dir=~"' /usr/bin/code
+RUN sed -i '/^ELECTRON=.*/i VSCODE_PATH="/usr/share/code"' /usr/bin/code
+RUN sed -i 's!/code !&--no-sandbox --user-data-dir=~ !' /usr/share/applications/code.desktop
 
 # Delete temp files
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set passwords and user
 RUN echo 'root:0000' | chpasswd
-RUN useradd -m hyeonbeen
-RUN usermod -aG sudo hyeonbeen
-RUN echo "hyeonbeen" | sudo -S chmod 777 /home
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-RUN echo 'hyeonbeen:0000' | chpasswd
+# RUN useradd -m hyeonbeen
+# RUN usermod -aG sudo hyeonbeen
+# RUN echo "hyeonbeen" | sudo -S chmod 777 /home
+# RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# RUN echo 'hyeonbeen:0000' | chpasswd
 
 # After build, run container by:
 # docker run -itd --name test -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix -p 3389:3389 -p 33:22 myubuntu:focal
