@@ -82,6 +82,11 @@ RUN echo 'root:0000' | chpasswd
 # service xrdp restart
 
 # Connect using RDP client
-# Address: localhost:3390
-# Username: hyeonbeen 
+# Address: localhost:3389
+# Username: root 
+# PW: 0000
+
+# Connect SSH
+# Address: localhost:33
+# Username: root 
 # PW: 0000
