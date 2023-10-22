@@ -46,7 +46,6 @@ RUN echo unset XDG_RUNTIME_DIR >>/etc/xrdp/startwm.sh
 RUN echo . $HOME/.profile >>/etc/xrdp/startwm.sh
 RUN echo exec /bin/sh /etc/X11/Xsession >>/etc/xrdp/startwm.sh
 RUN service xrdp restart
-RUN xrdp
 
 # Install Firefox
 RUN DEBIAN_FRONTEND=noninteractive apt-get install chromium-browser -y
