@@ -64,9 +64,6 @@ RUN sed -i '/^#!.*/a set -- "$@" "--no-sandbox" "--user-data-dir=~"' /usr/bin/co
 RUN sed -i '/^ELECTRON=.*/i VSCODE_PATH="/usr/share/code"' /usr/bin/code
 RUN sed -i 's!/code !&--no-sandbox --user-data-dir=~ !' /usr/share/applications/code.desktop
 
-# Delete temp files
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # Set passwords and user
 RUN echo 'root:0000' | chpasswd
 # RUN useradd -m hyeonbeen
@@ -74,6 +71,10 @@ RUN echo 'root:0000' | chpasswd
 # RUN echo "hyeonbeen" | sudo -S chmod 777 /home
 # RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # RUN echo 'hyeonbeen:0000' | chpasswd
+# USER hyeonbeen
+
+# Delete temp files
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # After build, run container by:
 # docker run -itd --name test -e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix -p 3389:3389 -p 33:22 myubuntu:focal
