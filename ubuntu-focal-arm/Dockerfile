@@ -18,7 +18,7 @@ RUN sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 
 # Install
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install vim git wget tmux net-tools openssh-server x11-apps -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install vim git wget curl tmux net-tools openssh-server x11-apps -y
 
 # Setup SSH
 EXPOSE 22
@@ -60,7 +60,7 @@ RUN rm -f packages.microsoft.gpg
 RUN DEBIAN_FRONTEND=noninteractive apt install apt-transport-https -y
 RUN apt update
 RUN DEBIAN_FRONTEND=noninteractive apt install code -y
-RUN sed -i '/^#!.*/a set -- "$@" "--no-sandbox" "--user-data-dir=~"' /usr/bin/code
+RUN sed -i '/^#!.*/a set -- "$@" "--no-sandbox" "--user-data-dir=/root/vscode_userdata"' /usr/bin/code
 RUN sed -i '/^ELECTRON=.*/i VSCODE_PATH="/usr/share/code"' /usr/bin/code
 RUN sed -i 's!/code !&--no-sandbox --user-data-dir=~ !' /usr/share/applications/code.desktop
 
