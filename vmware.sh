@@ -4,6 +4,9 @@ sudo -- sh -c "echo "hyeonbeen" | sudo -S chmod 777 /home"
 sudo -- sh -c "echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers"
 
 # Install apps
+sudo sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+sudo sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+sudo sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 sudo apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install vim git wget curl tmux net-tools openssh-server x11-apps open-vm-tools open-vm-tools-desktop -y
 
