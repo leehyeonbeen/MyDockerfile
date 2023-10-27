@@ -43,11 +43,11 @@ sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install code -y
 
 # Install miniconda
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-~/miniconda3/bin/conda init bash
+# mkdir -p ~/miniconda3
+# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda3/miniconda.sh
+# bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+# rm -rf ~/miniconda3/miniconda.sh
+# ~/miniconda3/bin/conda init bash
 
 # Clean
 sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
