@@ -56,15 +56,15 @@ sudo apt update
 sudo apt install ros-noetic-desktop-full -y
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-sudo apt install python3-rosdep
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
+sudo apt install python3-rosdep -y
 sudo rosdep init
 rosdep update
 # ROS Turtlebot3
-sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy
-sudo apt-get install ros-noetic-dynamixel-sdk
-sudo apt-get install ros-noetic-turtlebot3-msgs
-sudo apt-get install ros-noetic-turtlebot3
+sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy -y
+sudo apt-get install ros-noetic-dynamixel-sdk -y
+sudo apt-get install ros-noetic-turtlebot3-msgs -y
+sudo apt-get install ros-noetic-turtlebot3 -y
 echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
 # Setup catkin_ws
 mkdir -p ~/catkin_ws/src
