@@ -72,6 +72,7 @@ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
 # Setup catkin_ws
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
+catkin_make
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 
