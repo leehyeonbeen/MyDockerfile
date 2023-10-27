@@ -49,5 +49,28 @@ sudo DEBIAN_FRONTEND=noninteractive apt install code -y
 # rm -rf ~/miniconda3/miniconda.sh
 # ~/miniconda3/bin/conda init bash
 
+# ROS-Noetic installation
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo apt update
+sudo apt install ros-noetic-desktop-full -y
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
+# ROS Turtlebot3
+sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy
+sudo apt-get install ros-noetic-dynamixel-sdk
+sudo apt-get install ros-noetic-turtlebot3-msgs
+sudo apt-get install ros-noetic-turtlebot3
+echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
+# Setup catkin_ws
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
+catkin_make
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
 # Clean
 sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
