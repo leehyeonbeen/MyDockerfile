@@ -27,7 +27,9 @@ sudo -- sh -c "echo unset DBUS_SESSION_BUS_ADDRESS >>/etc/xrdp/startwm.sh"
 sudo -- sh -c "echo unset XDG_RUNTIME_DIR >>/etc/xrdp/startwm.sh"
 sudo -- sh -c "echo . $HOME/.profile >>/etc/xrdp/startwm.sh"
 sudo -- sh -c "echo exec /bin/sh /etc/X11/Xsession >>/etc/xrdp/startwm.sh"
+sudo systemctl restart xrdp
 sudo service xrdp restart
+
 
 # Install firefox
 sudo DEBIAN_FRONTEND=noninteractive apt-get install firefox -y
@@ -60,6 +62,7 @@ sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator 
 sudo apt install python3-rosdep -y
 sudo rosdep init
 rosdep update
+echo "alias cm="catkin_make"" >> ~/.bashrc
 # ROS Turtlebot3
 sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy -y
 sudo apt-get install ros-noetic-dynamixel-sdk -y
@@ -69,8 +72,8 @@ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
 # Setup catkin_ws
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
-catkin_make
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
 
 # Clean
 sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
