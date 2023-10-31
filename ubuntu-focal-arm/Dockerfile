@@ -21,12 +21,10 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install vim git wget curl tmux net-tools openssh-server x11-apps -y
 
 # Setup SSH
-EXPOSE 22
-RUN ssh-keygen -A
-RUN  mkdir /var/run/sshd
+RUN echo 'root:0000' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
-CMD ["/usr/sbin/sshd", "-D"]
+EXPOSE 22
 
 # Install miniconda
 RUN mkdir -p ~/miniconda3

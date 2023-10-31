@@ -23,12 +23,10 @@ RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 # RUN rosdep init && rosdep update
 
 # SSH-settings
-RUN mkdir /var/run/sshd
-RUN echo 'root:7941' | chpasswd
+RUN echo 'root:0000' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
 
 # Install miniconda
 RUN mkdir -p ~/miniconda3
