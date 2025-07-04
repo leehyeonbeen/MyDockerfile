@@ -5,9 +5,9 @@ DEBIAN_FRONTEND=noninteractive apt-get update -y
 DEBIAN_FRONTEND=noninteractive apt-get install ca-certificates -y
 
 # Change apt mirrors
-sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
-sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
-sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
+# sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+# sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+# sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 
 # Install
 DEBIAN_FRONTEND=noninteractive apt-get update -y
