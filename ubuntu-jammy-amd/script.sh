@@ -1,13 +1,18 @@
 # Get certificate
 DEBIAN_FRONTEND=noninteractive apt-get update -y
 DEBIAN_FRONTEND=noninteractive apt-get install ca-certificates -y
+
 # Change apt mirrors
 sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
+
 # Install
 DEBIAN_FRONTEND=noninteractive apt-get update -y
 DEBIAN_FRONTEND=noninteractive apt-get install vim git wget tmux net-tools openssh-server x11-apps -y
+
+# Enable mouse on tmux
+echo "set -g mouse on" >> /root/.tmux.conf
 
 # SSH-settings
 echo 'root:0000' | chpasswd
