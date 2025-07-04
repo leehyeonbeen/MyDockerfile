@@ -33,7 +33,7 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/12.8.0/local_install
 RUN sudo dpkg -i cuda-repo-ubuntu2204-12-8-local_12.8.0-570.86.10-1_amd64.deb
 RUN sudo cp /var/cuda-repo-ubuntu2204-12-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
 RUN sudo apt-get update
-RUN sudo apt-get -y install cuda-toolkit-12-8
+RUN sudo apt-get -y install cuda-toolkit-12-8 -y
 
 # Install Docker
 RUN for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
@@ -49,7 +49,7 @@ RUN echo \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 RUN sudo apt-get update
-RUN sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+RUN sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
 # Delete temp files
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
