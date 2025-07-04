@@ -11,8 +11,9 @@ sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 DEBIAN_FRONTEND=noninteractive apt-get update -y
 DEBIAN_FRONTEND=noninteractive apt-get install vim git wget tmux net-tools openssh-server x11-apps -y
 
-# Enable mouse on tmux
+# tmux setup
 echo "set -g mouse on" >> /root/.tmux.conf
+touch ~/.no_auto_tmux
 
 # SSH-settings
 echo 'root:0000' | chpasswd
