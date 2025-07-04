@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Get certificate
 DEBIAN_FRONTEND=noninteractive apt-get update -y
 DEBIAN_FRONTEND=noninteractive apt-get install ca-certificates -y
