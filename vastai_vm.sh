@@ -11,7 +11,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install ca-certificates -y
 
 # Install
 DEBIAN_FRONTEND=noninteractive apt-get update -y
-DEBIAN_FRONTEND=noninteractive apt-get install vim git wget tmux net-tools openssh-server x11-apps -y
+DEBIAN_FRONTEND=noninteractive apt-get install vim git wget tmux net-tools openssh-server gh -y
 
 # tmux setup
 echo "set -g mouse on" >> /root/.tmux.conf
