@@ -3,7 +3,6 @@
 # Delete venv
 sudo rm -rf .venv/ /home/jovyan_venv/ # delete venv directories
 sed -i '/\.venv/d' ~/.bashrc # delete relevant lines in ~/.bashrc
-source ~/.bashrc
 
 # Install miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
