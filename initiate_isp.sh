@@ -15,7 +15,8 @@ sudo sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sudo sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sudo sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 sudo apt update && sudo apt upgrade -y
-sudo apt install ca-certificates curl wget vim git tmux net-tools openssh-server -y
+sudo apt install ca-certificates curl wget vim git tmux net-tools openssh-server rsync -y
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
 
 # Setup tmux
 echo "set -g mouse on" >> ~/.tmux.conf
