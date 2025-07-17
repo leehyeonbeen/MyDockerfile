@@ -20,6 +20,7 @@ sudo apt install ca-certificates curl wget vim git tmux net-tools openssh-server
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 git config --global user.name "Edward Hyeonbeen Lee"
 git config --global user.email "edward.hyeonbeen.lee@gmail.com"
+git config pull.rebase false
 
 # Set timezone and sync
 sudo apt install ntpdate -y
