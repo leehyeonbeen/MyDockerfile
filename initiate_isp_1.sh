@@ -15,15 +15,19 @@ sudo sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sudo sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 sudo apt update && sudo apt upgrade -y
 
-
+# Install applications
 sudo apt install ca-certificates curl wget vim git tmux net-tools openssh-server rsync -y
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+# Set timezone and sync
+sudo apt install ntpdate -y
+sudo ntpdate time.google.com
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 # Setup tmux
 echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g history-limit 1000000" >> ~/.tmux.conf
 echo "set -g @scroll-speed-num-lines-per-scroll 1" >> ~/.tmux.conf
-
 
 # Cleanup caches
 sudo apt autoremove
