@@ -1,6 +1,7 @@
 FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu22.04
 
 ENV TZ=Asia/Seoul
+ENV GZIP="-9"
 
 # Get certificate
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
@@ -17,13 +18,13 @@ CMD ["bash"]
 SHELL ["/bin/bash", "-c"] 
 
 # Apply Korean mirrors
-RUN sudo sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
-RUN sudo sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
-RUN sudo sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
+# RUN sudo sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+# RUN sudo sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+# RUN sudo sed -i 's/ports.ubuntu.com/ftp.lanet.kr/g' /etc/apt/sources.list
 RUN sudo apt update && sudo apt upgrade -y
 
 # Install applications
-RUN sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip unzip ntpdate -y
+RUN sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip unzip ntpdate bash-completion -y
 RUN sudo -v ; curl https://rclone.org/install.sh | sudo bash
 RUN git config --global user.name "Edward Hyeonbeen Lee"
 RUN git config --global user.email "edward.hyeonbeen.lee@gmail.com"
@@ -39,7 +40,11 @@ RUN source ~/miniconda3/bin/activate
 RUN conda init --all
 RUN conda install -c conda-forge conda-bash-completion -y
 
-# Setup tmux
+# tmux auto-completion
+RUN curl -fSsL "https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux" > ~/.bash.tmux-bash-completion
+RUN echo 'source ~/.bash.tmux-bash-completion' >> ~/.bashrc
+RUN source ~/.bashrc
+# tmux config
 RUN echo "set -g mouse on" >> ~/.tmux.conf
 RUN echo "set -g history-limit 1000000" >> ~/.tmux.conf
 RUN echo "set -g @scroll-speed-num-lines-per-scroll 1" >> ~/.tmux.conf
