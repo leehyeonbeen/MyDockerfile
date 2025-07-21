@@ -17,8 +17,10 @@ sed -i '/\.venv/d' ~/.bashrc # delete relevant lines in ~/.bashrc
 
 # Install miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ~/Miniconda3-latest-Linux-x86_64.sh
-rm -rf ~/Miniconda3-latest-Linux-x86_64.sh
+bash ~/hyeonbeen-vol/Miniconda3-latest-Linux-x86_64.sh
+rm -rf ~/hyeonbeen-vol/Miniconda3-latest-Linux-x86_64.sh
+source ~/miniconda3/bin/activate
+conda init --all
 
 # Install applications
 sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip unzip bash-completion -y
