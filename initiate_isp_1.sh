@@ -37,6 +37,8 @@ echo 'source ~/.bash.tmux-bash-completion' >> ~/.bashrc
 echo "set -g mouse on" >> ~/.tmux.conf
 echo "set -g history-limit 1000000" >> ~/.tmux.conf
 echo "set -g @scroll-speed-num-lines-per-scroll 1" >> ~/.tmux.conf
+echo "bind -T copy-mode WheelUpPane send -N1 -X scroll-up" >> ~/.tmux.conf
+echo "bind -T copy-mode WheelDownPane send -N1 -X scroll-down" >> ~/.tmux.conf
 
 # Cleanup caches
 sudo apt autoremove
