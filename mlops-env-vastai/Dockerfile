@@ -48,6 +48,7 @@ RUN source ~/.bashrc
 RUN echo "set -g @scroll-speed-num-lines-per-scroll 1" >> ~/.tmux.conf
 RUN echo "bind -T copy-mode WheelUpPane send -N1 -X scroll-up" >> ~/.tmux.conf
 RUN echo "bind -T copy-mode WheelDownPane send -N1 -X scroll-down" >> ~/.tmux.conf
+RUN echo "unbind -T copy-mode MouseDragEnd1Pane" >> ~/.tmux.conf
 RUN touch ~/.no_auto_tmux
 
 # Cleanup caches
