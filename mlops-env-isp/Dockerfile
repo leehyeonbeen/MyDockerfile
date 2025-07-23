@@ -25,7 +25,7 @@ RUN sudo apt update && sudo apt upgrade -y
 
 # Install applications
 RUN sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip unzip bash-completion -y
-sudo apt-get install --reinstall man-db
+RUN sudo apt-get install --reinstall man-db
 RUN sudo -v ; curl https://rclone.org/install.sh | sudo bash
 RUN git config --global user.name "Edward Hyeonbeen Lee"
 RUN git config --global user.email "edward.hyeonbeen.lee@gmail.com"
