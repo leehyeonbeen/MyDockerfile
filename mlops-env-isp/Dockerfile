@@ -33,8 +33,8 @@ RUN git config --global user.name "Edward Hyeonbeen Lee"
 RUN git config --global user.email "edward.hyeonbeen.lee@gmail.com"
 
 # SSH config
-RUN sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+RUN sudo sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sudo sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sudo service ssh start
 EXPOSE 22
 
