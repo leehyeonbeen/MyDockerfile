@@ -27,8 +27,16 @@ RUN sudo apt update && sudo apt upgrade -y
 RUN sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip unzip bash-completion -y
 RUN sudo apt-get install --reinstall man-db -y
 RUN sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+# Git config
 RUN git config --global user.name "Edward Hyeonbeen Lee"
 RUN git config --global user.email "edward.hyeonbeen.lee@gmail.com"
+
+# SSH config
+RUN sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+RUN sudo service ssh start
+EXPOSE 22
 
 # Install miniconda3
 ENV PATH="/home/hyeonbeen/miniconda3/bin:$PATH"
