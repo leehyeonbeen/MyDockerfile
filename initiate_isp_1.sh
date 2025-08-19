@@ -23,7 +23,7 @@ source ~/miniconda3/bin/activate
 conda init --all
 
 # Install applications
-sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip unzip bash-completion -y
+sudo apt install curl wget vim git tmux net-tools openssh-server rsync gzip pigz bash-completion -y
 sudo apt-get install --reinstall man-db
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
 git config --global user.name "Edward Hyeonbeen Lee"
@@ -39,6 +39,11 @@ echo "set -g history-limit 10000" >> ~/.tmux.conf
 echo "set -g @scroll-speed-num-lines-per-scroll 1" >> ~/.tmux.conf
 echo "bind -T copy-mode WheelUpPane send -N1 -X scroll-up" >> ~/.tmux.conf
 echo "bind -T copy-mode WheelDownPane send -N1 -X scroll-down" >> ~/.tmux.conf
+# tmux autostart
+echo "# tmux auto-start" >> ~/.bashrc
+echo "if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then" >> ~/.bashrc
+echo "    (tmux attach-session -t base || tmux new-session -s base) && exit 0" >> ~/.bashrc
+echo "fi" >> ~/.bashrc
 
 # Cleanup caches
 sudo apt autoremove
